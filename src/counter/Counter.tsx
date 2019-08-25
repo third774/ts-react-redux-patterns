@@ -3,6 +3,7 @@ import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../store";
 import { countSelector } from "./counterSelectors";
 import counterActions from "./counterActions";
+import Button from "../common/Button";
 
 // These are props that we expect to receive from a parent
 type Props = {
@@ -32,8 +33,8 @@ const Counter: React.FC<Props & PropsFromRedux> = ({
     <div>
       <h1>{title}</h1>
       {count}
-      <button onClick={decrement}>-</button>
-      <button onClick={increment}>+</button>
+      <Button onClick={decrement}>-</Button>
+      <Button onClick={increment}>+</Button>
     </div>
   );
 };
