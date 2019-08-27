@@ -4,4 +4,4 @@
 // get our discriminated union for our reducer!
 export type ActionTypesFromActionMap<
   T extends { [K in keyof T]: (...args: any[]) => any }
-> = Extract<ReturnType<T[keyof T]>, { type: string }>;
+> = Exclude<ReturnType<T[keyof T]>, (...args: any[]) => Promise<any>>;
