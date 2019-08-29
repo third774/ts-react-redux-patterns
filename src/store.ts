@@ -2,16 +2,12 @@ import { createStore, combineReducers, Reducer } from "redux";
 import { todoReducer } from "./todo/todoReducer";
 import { counterReducer } from "./counter/counterReducer";
 
-const reducer = combineReducers({
+const rootReducer = combineReducers({
   todo: todoReducer,
   counter: counterReducer
 });
 
-type StateFromReducer<T extends Reducer<any>> = T extends Reducer<infer S>
-  ? S
-  : never;
-
-export type RootState = StateFromReducer<typeof reducer>;
+export type RootState = ReturnType<typeof rootReducer>;
 
 declare global {
   interface Window {
@@ -20,6 +16,6 @@ declare global {
 }
 
 export default createStore(
-  reducer,
+  rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
