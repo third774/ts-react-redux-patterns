@@ -13,7 +13,7 @@ export function makeAction<
   return creator === undefined
     ? () => ({ type })
     : (...args: Parameters<Creator>) => ({
-        type,
         ...creator(...args),
+        type,
       })
 }
